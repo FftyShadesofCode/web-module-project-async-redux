@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+.person {
+  border: 1px solid black;
+  width: 15%;
+  margin: 1%;
+}
+
+.person img {
+  box-sizing: border-box;
+  width: 125%;
+}

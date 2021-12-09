@@ -1,12 +1,39 @@
-import React from 'react';
+import React from "react";
 import './App.css';
+import {connect} from 'react-redux';
+import {fetchData} from './store';
+import { useEffect } from 'react';
 
-function App() {
+
+const App = (props) => {
+
+
+  useEffect(() => {
+    props.fetchData()
+  },[])
+
+  console.log(props.all)
+
   return (
     <div className="App">
-      Async Redux Project
+      <div className='people'>
+      {props.all.map(person => (
+        <div key={person.char_id} className='person'>
+          <h3>{person.name}</h3>
+          <p>{person.occupation}</p>
+          <img src={person.img} alt={person.name}/>
+        </div>
+      ))}
+      </div>
     </div>
   );
 }
 
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    all:state.all,
+  }
+}
+export default connect(mapStateToProps,{fetchData})(App);
+ 
